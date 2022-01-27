@@ -27,3 +27,21 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+wallet = [
+  {owner: "ben", balance: 0},
+  {owner: "brian", balance: 0},
+  {owner: "evan", balance: 0},
+  {owner: "anthony", balance: 0}
+]
+
+for person in wallet
+  for transaction in blockchain
+    if transaction[:from_user] == person[:owner]
+      person[:balance] += -1 * transaction[:amount]
+    elsif transaction[:to_user] == person[:owner]
+      person[:balance] += 1 * transaction[:amount]
+    end
+    # puts person[:balance]
+  end
+  puts "#{person[:owner]}'s KelloggCoin balance is #{person[:balance]}."
+end
